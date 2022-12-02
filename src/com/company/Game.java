@@ -1,13 +1,13 @@
 package com.company;
 
 import com.company.entities.Player;
-import com.company.entities.Race;
 
 public class Game {
 
-    private final String name = "Duranova honda za dobrodruzstvim";
-    private final double version = 0.1;
-    private final String author = "Arnost";
+    private final String name = "Kindergarten - SPSMB DLC";
+    private final double version = 0.2;
+    private final String author = "Arnošt";
+    private GameDif gameDif;
     private GameDialog gameDialog;
     private Player player;
 
@@ -22,38 +22,36 @@ public class Game {
     }
 
     private void introMenu() {
-        gameDialog.say("Vitej v poklidnem mestecku. V mestecku bydli tisice lidi. Je cas na vyber tve postavy.");
-        gameDialog.say("Zvol si svoji rasu:", "red");
-        for (Race value : Race.values()) {
+        gameDialog.say("Vítejte v kůži Tomáše Ďurána, který chodí na Střední průmyslovou školu do Mladé Boleslavi, kde se ztratila Kája společně s virtuální realitou.\nNaposledy byla viděna včera ve škole na poslední hodině programování. I přesto jste dostali ředitelské volno  a tak se vydáváte do školy.");
+        gameDialog.say("Zvol si obtížnost:", "red");
+        for (GameDif value : GameDif.values()) {
             gameDialog.say(value.toString(), "purple");
         }
-        selectRace();
+        selectDif();
         storyIntro();
     }
 
-    public void selectRace() {
+    public void selectDif() {
         String userInput = gameDialog.userInput();
         boolean check = false;
-        for (Race value : Race.values()) {
+        for (GameDif value : GameDif.values()) {
             if (userInput.trim().equalsIgnoreCase(value.toString())) {
                 check = true;
-                player.setRace(value);
+                gameDif = value;
                 break;
             }
         }
         if (!check) {
-            selectRace();
-            return;
+            selectDif();
         }
-        System.out.println(player.getRace());
     }
 
     private void storyIntro() {
-        gameDialog.say("Zvolil sis rasu " + player.getRace(), "red");
+        gameDialog.say("Vybrána obtížnost " + gameDif, "red");
         gameDialog.say("------------------------------------------------", "white");
         gameDialog.say("                 Hra zacina                     ");
         gameDialog.say("------------------------------------------------", "white");
-        gameDialog.say("Vitej tomasi v nasem poklidnem mestecku, kde tisice lidi prezivaji tvoji existenci.");
+        gameDialog.say("Vítej Tomáši v našem poklidném městečku, kde tisíce lidí přežívají tvojí existenci.");
     }
 
 }

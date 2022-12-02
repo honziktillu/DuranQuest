@@ -26,13 +26,13 @@ public class GameDialog {
     private Scanner sc = new Scanner(System.in);
 
     public void intro(String gameName, double version, String author) {
-        System.out.println("Vitejte ve hre");
+        System.out.println("Vítejte ve hře");
         System.out.println("------------------------------------");
         System.out.print(ANSI_RED);
         System.out.println(gameName + " v" + version);
         System.out.print(ANSI_RESET);
         System.out.println("------------------------------------");
-        System.out.println("Vytvoril " + ANSI_CYAN + author + ANSI_RESET);
+        System.out.println("Vytvořil " + ANSI_CYAN + author + ANSI_RESET);
 
         System.out.println();
 

@@ -1,5 +1,6 @@
 package com.company.entities;
 
+import com.company.GameDif;
 import com.company.items.Food;
 import com.company.items.Potion;
 import com.company.map.GameLocation;
@@ -7,7 +8,6 @@ import com.company.map.GameLocation;
 public class Player implements Entity {
 
     private final String name = "Tomas Duran";
-    private Race race;
 
     @Override
     public void fight() {
@@ -49,13 +49,7 @@ public class Player implements Entity {
 
     }
 
-    public Race getRace() {
-        return race;
-    }
 
-    public void setRace(Race race) {
-        this.race = race;
-    }
 
     public String getName() {
         return name;
