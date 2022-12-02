@@ -1,24 +1,28 @@
 package com.company;
 
+import com.company.days.DayManager;
 import com.company.entities.Player;
 
 public class Game {
 
     private final String name = "Kindergarten - SPSMB DLC";
     private final double version = 0.2;
-    private final String author = "Arnošt";
+    private final String author = "Honzik";
     private GameDif gameDif;
     private GameDialog gameDialog;
+    private DayManager dayManager;
     private Player player;
 
     public Game() {
         gameDialog = new GameDialog();
+        dayManager = new DayManager();
         player = new Player();
     }
 
-    public void start() {
+    public void start() throws Exception {
         gameDialog.intro(name, version, author);
         introMenu();
+        dayManager.startDay();
     }
 
     private void introMenu() {
@@ -52,6 +56,10 @@ public class Game {
         gameDialog.say("                 Hra zacina                     ");
         gameDialog.say("------------------------------------------------", "white");
         gameDialog.say("Vítej Tomáši v našem poklidném městečku, kde tisíce lidí přežívají tvojí existenci.");
+    }
+
+    private void day() {
+
     }
 
 }
